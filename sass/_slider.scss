@@ -16,6 +16,9 @@
     border: 1px solid black;
     margin: 0 0 0.5rem 0;
     position: relative;
+
+    //cacher les points si l'utilisateur est sur mobile
+    visibility: hidden;
 }
 
 .slide-wrap a:hover{
@@ -65,4 +68,19 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+@media screen and (min-width:500px) {
+    .slide-wrap a{
+        //rendre les points visible sur desktop
+        visibility: visible;
+        margin-top: 10px;
+    }
+
+    //chacher le scroll
+    .slider{
+        overflow-x: hidden;
+    }
+    //trouver comment laisser le lien actif
+
 }

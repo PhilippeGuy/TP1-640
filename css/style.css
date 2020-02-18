@@ -647,6 +647,7 @@ l'état checked est testé ici:
   border: 1px solid black;
   margin: 0 0 0.5rem 0;
   position: relative;
+  visibility: hidden;
 }
 
 .slide-wrap a:hover {
@@ -695,6 +696,16 @@ l'état checked est testé ici:
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 500px) {
+  .slide-wrap a {
+    visibility: visible;
+    margin-top: 10px;
+  }
+  .slider {
+    overflow-x: hidden;
+  }
 }
 
 /*--------------------------------------------------------------
