@@ -1,18 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercie #5</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <title>TP1-640</title>
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One|Roboto&display=swap" rel="stylesheet">
+    <script type="module" src="./mjs/main.mjs"></script>
 </head>
+
 <body>
-    <header></header>
-    <nav></nav>
-    <main></main>
-    <footer></footer>
+
+    <header>
+        <section class="global">
+            <h1>Exercice #5</h1>
+            <h2>Slider Css</h2>
+        </section>
+    </header>
+    <div id='entete'>Distinctio, iste praesentium</div>
+    <nav id='menu'>
+            <input id="checkMenu" type="checkbox">
+            <label id="btnMenu" for="checkMenu">&#9776;</label>
+            <ul>
+                <li><a href="">Lorem</a></li>
+                <li><a href="">Vero</a></li>
+                <li><a href="">Aperiam</a></li>
+                <li><a href="">Reprehenderit</a></li>
+                <li><a href="">Incidunt</a></li>
+                <li><a href="">Est</a></li>
+                <li><label id="btnRecherche" for="checkRecherche">&#128269;</label></li>
+            </ul>
+            <input type="checkbox" id="checkRecherche">
+            <input type="search" id="recherche">
+    </nav>
+    <main>
+        <section class="global">
+            <h1>Slider CSS</h1>
+
+            <div class="slide-wrap">
+                <div class="slider">
+                    <div class="slide" id="slide-1"></div>
+                    <div class="slide" id="slide-2"></div>
+                    <div class="slide" id="slide-3"></div>
+                    <div class="slide" id="slide-4"></div>
+                    <div class="slide" id="slide-5"></div>
+                </div>
+
+                <a href="#slide-1"></a>
+                <a href="#slide-2"></a>
+                <a href="#slide-3"></a>
+                <a href="#slide-4"></a>
+                <a href="#slide-5"></a>
+
+            </div>
+        </section>
+    </main>
+
+    <footer id='pied-page'>
+        <section class="global">
+            <ul>
+                <li>Lorem, ipsum</li>
+                <li>Soluta, distinctio</li>
+                <li>Non, praesentium</li>
+                <li>Cupiditate, deserunt</li>
+                <li>Error, laborum</li>
+            </ul>
+            <ul>
+                <li>Dolore, architecto</li>
+                <li>Illo, ipsum</li>
+                <li>Impedit, laborum</li>
+                <li>Dolores, quisquam</li>
+                <li>Cupiditate, dolores</li>
+            </ul>
+            <ul>
+                <li>Distinctio, iste</li>
+                <li>Porro, repellat</li>
+                <li>Cumque, eligendi</li>
+                <li>Suscipit, enim</li>
+                <li>Sapiente, impedit</li>
+            </ul>
+            <ul>
+                <li>Voluptates, culpa</li>
+                <li>Harum, adipisci</li>
+                <li>Recusandae, ipsam</li>
+                <li>Delectus, dolores</li>
+                <li>Animi, voluptatum</li>
+            </ul>
+        </section>
+    </footer>
 </body>
+<script>
+    window.addEventListener('load', function () {
+        let elmChkMenu = document.querySelector('#checkMenu')
+        let elmBtnMenu = document.querySelector('#btnMenu')
+
+        window.addEventListener('resize', function () {
+            // console.log(window.innerWidth)
+            if (window.innerWidth >= 500) {
+                elmChkMenu.checked = false
+            }
+        })
+    })
+</script>
 </html>

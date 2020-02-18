@@ -1,0 +1,12 @@
+@keyframes animEntete{
+    from{
+        transform : translateX(1000px);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+
+.animEntete {
+    animation: animEntete 1s ease-out;
+}

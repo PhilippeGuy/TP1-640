@@ -1,0 +1,68 @@
+.slide-wrap{
+    text-align: center;
+}
+
+
+//style qui influence les boutons du slider
+.slide-wrap a{
+    display: inline-flex;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: white;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin: 0 0 0.5rem 0;
+    position: relative;
+}
+
+.slide-wrap a:hover{
+    background: black;
+}
+
+.slide-wrap a:visited{
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+//définition de la grandeur de la vue du slider et de son scroll
+.slider {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+//changement du scrollbar
+.slider::-webkit-scrollbar{
+    width: 8px;
+    height: 10px;
+}
+.slider::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+}
+
+
+//propriété d'une slide du slider
+.slide {
+    font-size: 14pt;
+    color: white;
+    font-weight: bold;
+    width: 300px;
+    flex-shrink: 0;
+    height: 100%;
+    background-color: red;
+    border-radius: 15%;
+    scroll-snap-align: start;
+    
+    //gestion du fond pour le préparer à recevoir l'image
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

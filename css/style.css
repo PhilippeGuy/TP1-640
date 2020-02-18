@@ -1,0 +1,902 @@
+@charset "UTF-8";
+/*!
+Auteur: Eddy Martin
+Description: Gabarit de base permettant d'explorer Sass et différents techniques CSS
+Version: 1.0.0
+License: GNU General Public License v2 or later
+
+*/
+/*--------------------------------------------------------------
+>>> LISTE DES FICHIERS SCSS IMPORTÉS 
+----------------------------------------------------------------
+# Variables
+# Mixin
+# Extend
+# Layout
+# Element
+# entete
+# Menu
+# Pied-page
+----------------------------------------------------------------
+# Variables
+--------------------------------------------------------------*/
+/* ------------------------------------------------------------
+# Mixin 
+--------------------------------------------------------------*/
+/* ----------------------------------------- */
+/* ------  Un premier exemple de mixin ----- */
+/* ----------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+.modal-background {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: black;
+  opacity: 0.9;
+}
+
+/*
+  Le resultat CSS produit par SCSS
+
+  .modal-background {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: black;
+        opacity: 0.9;
+}
+
+*/
+/* ---------------------------------------------------------------------------------------------------------------------
+Réutilisabilité
+------------------------------------------------------------------------------------------------------------------------
+Le but principal d'un mixin est de rendre un ensemble de propriétés réutilisables.
+Comme les variables Sass (où vous définissez vos valeurs sur un seul emplacement), 
+les mixins Sass vous permettent de définir des propriétés sur un seul emplacement.
+Le mixin précédent peut être réutilisé dans d'autres règles:
+------------------------------------------------------------------------------------------------------------------------ */
+.modal-background {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.product-link {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.image-pattern {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* ------------------------------------------------------------------------------  
+Paramètres
+--------------------------------------------------------------------------------- 
+Les mixins étant des fonctions on peut y intégrer des paramètres, 
+Par exemple, on peut généraliser la propriété border-radius pour 
+l'adapter à plusieurs navigateurs.
+-------------------------------------------------------------------------------- */
+.box {
+  border-radius: 3px;
+}
+
+/*----------------------------------------------------------------------------------- 
+Paramètres facultatifs
+-------------------------------------------------------------------------------------
+Si vous souhaitez qu'un paramètre ait une valeur par défaut tout en offrant la possibilité
+d'en définir un occasionnellement, vous pouvez créer des paramètres facultatifs:
+------------------------------------------------------------------------------------- */
+/* Utilisation du mixin */
+div.highlighter-rouge {
+  position: relative;
+}
+
+div.highlighter-rouge:before {
+  background: #aaa;
+  color: rgba(0, 0, 0, 0.5);
+  content: "Code";
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  height: 1rem;
+  left: 0;
+  letter-spacing: 0.1em;
+  line-height: 1rem;
+  padding: 0 0.5em;
+  position: absolute;
+  text-transform: uppercase;
+  top: 0;
+}
+
+div.highlighter-rouge.css {
+  position: relative;
+}
+
+div.highlighter-rouge.css:before {
+  background: #0ff;
+  color: white;
+  content: "CSS";
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  height: 1rem;
+  left: 0;
+  letter-spacing: 0.1em;
+  line-height: 1rem;
+  padding: 0 0.5em;
+  position: absolute;
+  text-transform: uppercase;
+  top: 0;
+}
+
+div.highlighter-rouge.scss {
+  position: relative;
+}
+
+div.highlighter-rouge.scss:before {
+  background: #c69;
+  color: white;
+  content: "SCSS";
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  height: 1rem;
+  left: 0;
+  letter-spacing: 0.1em;
+  line-height: 1rem;
+  padding: 0 0.5em;
+  position: absolute;
+  text-transform: uppercase;
+  top: 0;
+}
+
+/*
+    Permet de définir un pseudo élément
+*/
+/*
+    Voici un exemple d'utilisation sans aucun argument 
+    (vous verrez également ce mixin utilisé dans certains de nos 
+    autres mixins ci-dessous également).
+*/
+div.mon_pseudo {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #aaa;
+}
+
+div.mon_pseudo::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: #0f0;
+}
+
+/*
+Ce mixin élimine tous les tracas de la création d'un HTML/CSS triangle 
+que vous verrez  apparaître dans la plupart des info-bulles traditionnelles, 
+le tout sans images, vous spécifiez simplement sa couleur, la taille que vous voulez, 
+la direction vers laquelle il pointera et c'est fait!
+*/
+.mon_triangle {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #0f0;
+  margin-right: -10px;
+}
+
+/* ------------------------------------------------------------------------------ */
+/*  @content                                                                      */
+/* ------------------------------------------------------------------------------ */
+/* @content permet l'extension d'un Mixin. Nous pouvons passer un bloc de code css
+   à un Mixins avec l'utilisation de @content. En bref, @content rend cela possible.
+
+   grid() est un mixin qu'on va étendre avec @content
+*/
+/* @content permet d'intégrer du code de plus */
+/*
+Et maintenant, notre grille Mixin peut prendre du code CSS intégré. 
+Un exemple de cas d'utilisation est celui des media queries. 
+Voici un exemple
+*/
+/* ------------------------------------------------------------
+# Extend 
+--------------------------------------------------------------*/
+/* ------------------------------------------------------------------------------ */
+/* @extend  
+/* ------------------------------------------------------------------------------ */
+/* Un  @extend permet d'hériter des propriétés CSS d'un autre sélecteur           */
+/* ------------------------------------------------------------------------------ */
+.small-uppercase, .modal-background, .product-link, .image-pattern {
+  color: lightslategrey;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+
+/*
+  .small-uppercase,
+  .modal-background,
+  .product-link,
+  .image-pattern{
+    color: lightslategrey;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    line-height: 12px;
+    text-transform: uppercase;
+  }
+  */
+/* ---------------------------------------------------------------------------- */
+/* Différence avec les mixins                                                   */
+/* ---------------------------------------------------------------------------- */
+/* 
+Il y a 2 différences:
+La règle @extend n'a pas de paramètres. Les mixins en ont.
+La règle @extend combine des sélecteurs. Les mixins non.
+*/
+/*
+La liste des propriétés est simplement répétée autant de fois que le 
+@include small-uppercase () est appelé.
+
+Un  @extend est plus efficace, car il n'écrit les propriétés 
+communes qu'une seule fois.
+On peut optimiser @extend avec un «placeholder»
+en précédent notre extension avec «%»
+*/
+.modal-background, .product-link, .image-pattern {
+  color: lightslategrey;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+
+.modal-background,
+.product-link,
+.image-pattern {
+  color: lightslategrey;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+
+#checkMenu, #checkRecherche {
+  display: none;
+}
+
+/* ------------------------------------------------------------
+# Element 
+--------------------------------------------------------------*/
+/* Les éléments simples.  
+On définit ici des règles de styles générales qui peuvent être enrichies ailleur.
+Ces règles servent de bases  
+*/
+header {
+  color: #b19090;
+}
+
+h1 {
+  font-size: 3em;
+  padding: 1rem 0 .1rem 0;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1em;
+  padding: 0 0 20px 0;
+  margin: 0;
+}
+
+@media screen and (min-width: 500px) {
+  header h1 {
+    font-size: 5em;
+    margin: 0;
+  }
+  header h2 {
+    font-size: 1em;
+    margin: 0;
+  }
+}
+
+/* ------------------------------------------------------------
+# Layout
+--------------------------------------------------------------*/
+body {
+  width: 100vw;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+header,
+nav,
+main,
+footer {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+header {
+  z-index: 999;
+}
+
+header,
+footer {
+  background-color: #a44444;
+}
+
+nav {
+  background-color: #4a1f1f;
+}
+
+main {
+  padding-top: 3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  background-color: #f8efef;
+  color: #676262;
+}
+
+main section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+main section p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 20%;
+          flex: 1 1 20%;
+}
+
+.global {
+  width: 95%;
+}
+
+@media screen and (min-width: 600px) {
+  .global {
+    width: 80%;
+  }
+}
+
+/* ------------------------------------------------------------
+# entete
+--------------------------------------------------------------*/
+#entete {
+  background-color: #250e0e;
+  color: #b3afaf;
+  text-align: right;
+  padding: 0 30px;
+}
+
+/* ------------------------------------------------------------
+# Menu
+--------------------------------------------------------------*/
+/* 
+la barre de recherche est contrôlé par une case à cocher
+l'état checked est testé ici:
+*/
+#checkRecherche:checked ~ #recherche {
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
+  opacity: 0.8;
+}
+
+#recherche {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  background-color: #5c2626;
+  opacity: 0;
+  border: 0;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  color: #fff;
+}
+
+/* 
+le menu est contrôlé par une case à cocher
+l'état checked est testé ici:
+*/
+#checkMenu:checked ~ ul {
+  max-height: 200px;
+}
+
+#checkMenu:checked ~ ul > li {
+  opacity: 1;
+}
+
+#checkMenu:checked ~ #btnMenu {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  color: #0f0;
+}
+
+#btnMenu {
+  display: block;
+  color: #fff;
+  font-size: 2em;
+  -webkit-transform-origin: 50% 60%;
+          transform-origin: 50% 60%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: absolute;
+  width: 30px;
+  height: 32px;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+  left: 10px;
+  top: 5px;
+  cursor: pointer;
+}
+
+#menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  top: 110px;
+  background-color: #381717;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  height: 40px;
+}
+
+#menu ul {
+  width: 100vw;
+  margin-left: -20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  margin-top: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  list-style-type: none;
+  max-height: 0px;
+  height: auto;
+  -webkit-transition: max-height 1s;
+  transition: max-height 1s;
+  background-color: #381717;
+  overflow: hidden;
+}
+
+#menu ul li {
+  opacity: 0;
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+#menu ul li label {
+  display: block;
+  padding: 9px;
+  font-size: 14pt;
+  color: #b3afaf;
+}
+
+#menu ul li label:hover {
+  background-color: #a44444;
+  color: #fff;
+  cursor: pointer;
+}
+
+#menu ul li a {
+  text-decoration: none;
+  display: block;
+  padding: 6px 3px 3px 30px;
+  color: #b3afaf;
+}
+
+#menu ul li a:hover {
+  background-color: #a44444;
+  color: #fff;
+}
+
+#menu ul li a:last-child {
+  padding-bottom: 15px;
+}
+
+@media screen and (min-width: 500px) {
+  #checkRecherche:checked ~ #recherche {
+    -webkit-transform: translateY(40px);
+            transform: translateY(40px);
+    opacity: 0.8;
+  }
+  #recherche {
+    z-index: 0;
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    background-color: #5c2626;
+  }
+  #btnMenu {
+    display: none;
+  }
+  #menu {
+    position: static;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  #menu ul {
+    height: 26px;
+    margin: 0;
+    margin-left: 2%;
+    overflow: visible;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    opacity: 1;
+    z-index: 1;
+  }
+  #menu ul li {
+    opacity: 1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    text-align: center;
+    vertical-align: center;
+  }
+  #menu ul li a {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  #menu ul li a:hover {
+    background-color: #803535;
+  }
+}
+
+/*--------------------------------------------------------------
+# Slider
+--------------------------------------------------------------*/
+.slide-wrap {
+  text-align: center;
+}
+
+.slide-wrap a {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: white;
+  text-decoration: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin: 0 0 0.5rem 0;
+  position: relative;
+}
+
+.slide-wrap a:hover {
+  background: black;
+}
+
+.slide-wrap a:visited {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.slider {
+  width: 300px;
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.slider::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+.slider::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
+}
+
+.slide {
+  font-size: 14pt;
+  color: white;
+  font-weight: bold;
+  width: 300px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  height: 100%;
+  background-color: red;
+  border-radius: 15%;
+  scroll-snap-align: start;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/*--------------------------------------------------------------
+# animation entete 
+----------------------------------------------------------------*/
+@-webkit-keyframes animEntete {
+  from {
+    -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+@keyframes animEntete {
+  from {
+    -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+.animEntete {
+  -webkit-animation: animEntete 1s ease-out;
+          animation: animEntete 1s ease-out;
+}
+
+/*--------------------------------------------------------------
+# Pied-page 
+----------------------------------------------------------------*/
+/*
+mobile : 1 colonne
+tablette : 2 colonnes
+desktop : 4 colonnes
+*/
+#pied-page {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: #ccc9c9;
+}
+
+#pied-page section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+#pied-page ul {
+  padding: 10px;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0 10px 0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  border: 3px dotted #993f3f;
+}
+
+#pied-page ul li {
+  padding: 3px;
+}
+
+/* Utilisation de mixin pour ajouter un label sur chaques sections du footer */
+#pied-page section ul:nth-child(1) {
+  position: relative;
+}
+
+#pied-page section ul:nth-child(1):before {
+  background: #0ff;
+  color: white;
+  content: "SASS";
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  height: 1rem;
+  left: 0;
+  letter-spacing: 0.1em;
+  line-height: 1rem;
+  padding: 0 0.5em;
+  position: absolute;
+  text-transform: uppercase;
+  top: 0;
+}
+
+#pied-page section ul:nth-child(2) {
+  position: relative;
+}
+
+#pied-page section ul:nth-child(2):before {
+  background: #ffbb00;
+  color: white;
+  content: "SASS 1";
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  height: 1rem;
+  left: 0;
+  letter-spacing: 0.1em;
+  line-height: 1rem;
+  padding: 0 0.5em;
+  position: absolute;
+  text-transform: uppercase;
+  top: 0;
+}
+
+#pied-page section ul:nth-child(3) {
+  position: relative;
+}
+
+#pied-page section ul:nth-child(3):before {
+  background: #51ff00;
+  color: white;
+  content: "SASS 2";
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  height: 1rem;
+  left: 0;
+  letter-spacing: 0.1em;
+  line-height: 1rem;
+  padding: 0 0.5em;
+  position: absolute;
+  text-transform: uppercase;
+  top: 0;
+}
+
+#pied-page section ul:nth-child(4) {
+  position: relative;
+}
+
+#pied-page section ul:nth-child(4):before {
+  background: #a200ff;
+  color: white;
+  content: "SASS 3";
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  height: 1rem;
+  left: 0;
+  letter-spacing: 0.1em;
+  line-height: 1rem;
+  padding: 0 0.5em;
+  position: absolute;
+  text-transform: uppercase;
+  top: 0;
+}
+
+@media screen and (min-width: 500px) {
+  #pied-page section {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
+  }
+  #pied-page ul {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 40%;
+            flex: 1 1 40%;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #pied-page section {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  #pied-page ul {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 25%;
+            flex: 1 1 25%;
+  }
+}
+
+/*-------------------------------------------------------------- */
+/*# sourceMappingURL=style.css.map */
