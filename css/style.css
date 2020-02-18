@@ -290,6 +290,12 @@ en précédent notre extension avec «%»
   display: none;
 }
 
+#grid div {
+  background-color: #3498db;
+  width: 10rem;
+  height: 10rem;
+}
+
 /* ------------------------------------------------------------
 # Element 
 --------------------------------------------------------------*/

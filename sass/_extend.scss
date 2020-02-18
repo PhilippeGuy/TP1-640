@@ -92,6 +92,13 @@ en précédent notre extension avec «%»
     display: none;
   }
 
+  //crée une boite rouge
+  %boite{
+    background-color: $couleur_bleu;
+    width: 10rem;
+    height: 10rem;
+  }
+
   //mettre les checkbox invisibles
   #checkMenu{
     @extend %invisible; 

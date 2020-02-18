@@ -9,3 +9,7 @@
         "...";
     text-align: center;
 }
+
+#grid div{
+    @extend %boite;
+}
