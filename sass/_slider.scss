@@ -1,5 +1,6 @@
 .slide-wrap{
     text-align: center;
+    margin-top: 2rem;
 
     //style qui influence les boutons du slider
     a{
@@ -38,6 +39,9 @@
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+
+    border-radius: 15%;
+    border: 2px solid black;
 }
 
 //changement du scrollbar

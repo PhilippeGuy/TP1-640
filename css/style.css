@@ -374,7 +374,7 @@ nav {
 }
 
 main {
-  padding-top: 3em;
+  padding: 3em 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -391,12 +391,11 @@ main {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
-  background-color: #f8efef;
+  background-color: whitesmoke;
   color: #676262;
 }
 
 main section {
-  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -404,11 +403,9 @@ main section {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 main section p {
@@ -440,6 +437,11 @@ main section p {
   grid-row-gap: 15px;
       grid-template-areas: "..." "..." "...";
   text-align: center;
+}
+
+#grid div {
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
 
 #grid .gridHover:hover {
@@ -657,6 +659,7 @@ l'état checked est testé ici:
 --------------------------------------------------------------*/
 .slide-wrap {
   text-align: center;
+  margin-top: 2rem;
 }
 
 .slide-wrap a {
@@ -700,6 +703,8 @@ l'état checked est testé ici:
   -ms-scroll-snap-type: x mandatory;
       scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
+  border-radius: 15%;
+  border: 2px solid black;
 }
 
 .slider::-webkit-scrollbar {

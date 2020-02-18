@@ -12,6 +12,7 @@
     text-align: center;
 
     div{
+        transition: all 0.2s;
         @extend %boite;
     }
 
