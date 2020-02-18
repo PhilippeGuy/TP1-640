@@ -3,13 +3,22 @@
     display: grid;
     grid-template-columns:repeat(3, 1fr);
     grid-auto-rows: minmax(50px, auto);
+    grid-column-gap: 10px;
+    grid-row-gap: 15px;
     grid-template-areas:
         "..."
         "..."
         "...";
     text-align: center;
-}
 
-#grid div{
-    @extend %boite;
+    div{
+        @extend %boite;
+    }
+
+    //class qui gère le hover des éléments du grid
+    .gridHover:hover{
+        transform: scale(1.1);
+        background-color: steelblue;
+        cursor: pointer;
+    }
 }

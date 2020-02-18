@@ -42,12 +42,12 @@ main {
     color :  darken($couleur_blanc, 30%);
     
     section {
+        margin: 0 auto;
         display : flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: flex-start;
         p {
-
             flex : 1 1 20%;  // les paragraphes on une hauteur de 20%
         }
     }

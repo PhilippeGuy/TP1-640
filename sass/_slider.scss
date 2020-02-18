@@ -1,33 +1,32 @@
 .slide-wrap{
     text-align: center;
-}
 
+    //style qui influence les boutons du slider
+    a{
+        display: inline-flex;
+        width: 1.5rem;
+        height: 1.5rem;
+        background: white;
+        text-decoration: none;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 1px solid black;
+        margin: 0 0 0.5rem 0;
+        position: relative;
+    
+        //cacher les points si l'utilisateur est sur mobile
+        visibility: hidden;
+    }
 
-//style qui influence les boutons du slider
-.slide-wrap a{
-    display: inline-flex;
-    width: 1.5rem;
-    height: 1.5rem;
-    background: white;
-    text-decoration: none;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border: 1px solid black;
-    margin: 0 0 0.5rem 0;
-    position: relative;
+    a:hover{
+        background: black;
+    }
 
-    //cacher les points si l'utilisateur est sur mobile
-    visibility: hidden;
-}
-
-.slide-wrap a:hover{
-    background: black;
-}
-
-.slide-wrap a:visited{
-    width: 1.6rem;
-    height: 1.6rem;
+    a:visited{
+        width: 1.6rem;
+        height: 1.6rem;
+    }
 }
 
 //définition de la grandeur de la vue du slider et de son scroll

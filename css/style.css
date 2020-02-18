@@ -294,6 +294,7 @@ en précédent notre extension avec «%»
   background-color: #3498db;
   width: 10rem;
   height: 10rem;
+  border-radius: 15%;
 }
 
 /* ------------------------------------------------------------
@@ -395,6 +396,7 @@ main {
 }
 
 main section {
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -434,8 +436,17 @@ main section p {
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(50px, auto);
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
       grid-template-areas: "..." "..." "...";
   text-align: center;
+}
+
+#grid .gridHover:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background-color: steelblue;
+  cursor: pointer;
 }
 
 /* ------------------------------------------------------------
