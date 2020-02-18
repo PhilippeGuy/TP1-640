@@ -4,7 +4,7 @@
     grid-template-columns:repeat(3, 1fr);
     grid-auto-rows: minmax(50px, auto);
     grid-column-gap: 10px;
-    grid-row-gap: 15px;
+    grid-row-gap: 10px;
     grid-template-areas:
         "..."
         "..."
@@ -18,8 +18,31 @@
 
     //class qui gère le hover des éléments du grid
     .gridHover:hover{
-        transform: scale(1.1);
+        transform: scale(1.1) rotate(180deg);
         background-color: steelblue;
         cursor: pointer;
+    }
+}
+
+@media screen and (min-width:500px) {
+    #grid{
+        display: -ms-grid;
+        display: grid;
+        grid-template-columns:repeat(3, 1fr);
+        grid-auto-rows: minmax(50px, auto);
+        grid-column-gap: 15px;
+        grid-row-gap: 15px;
+        grid-template-areas:
+            "..."
+            "..."
+            "...";
+        text-align: center;
+    
+        div{
+            transition: all 0.2s;
+            width: 11em;
+            height: 11em;
+        }
+    
     }
 }

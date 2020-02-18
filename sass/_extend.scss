@@ -94,9 +94,16 @@ en précédent notre extension avec «%»
 
   //crée une boite rouge
   %boite{
+    //gestion du fond pour le préparer à recevoir l'image
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    //background-image: url("../media/images/eddy.jpg");
     background-color: $couleur_bleu;
-    width: 10rem;
-    height: 10rem;
+
+    width: 6rem;
+    height: 6rem;
     border-radius: 15%;
   }
 
