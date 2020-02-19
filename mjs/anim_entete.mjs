@@ -3,7 +3,7 @@ export class anim_entete{
         this.elmEntete = elmEntete;
     }
 
-    anim(){
+    animerEntete(){
         console.log('animation');
         const titres = this.elmEntete;
 

@@ -17,7 +17,6 @@ export class creation_slider{
         //loop qui ajoute l'image de fond pour chaque slide
         for(let i=0; i<slides.length; i++){
             slides[i].style.backgroundImage = "url("+this.contenuSlider.images[i].lien+")";
-            console.log(this.contenuSlider.images[i].lien);
         }
     }
 }
