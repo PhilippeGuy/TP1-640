@@ -4,11 +4,11 @@ import {creation_slider} from "./contenu_slider.mjs";
 //création de l'objet qui contient les images du slider
 let contenuSlider = {
     "images":[
-        { "nom":"Kiwi", "lien":"../media/images/Kiwi.jpg"},
-        { "nom":"Chameau", "lien":"../media/images/Camel.jpg"},
-        { "nom":"Donkey Kong", "lien":"../media/images/DK.jpg"},
-        { "nom":"Sandwich", "lien":"../media/images/sandwich.png"},
-        { "nom":"Reese", "lien":"../media/images/reese.jpg"}
+        { "nom":"Kiwi", "lien":"media/images/Kiwi.jpg"},
+        { "nom":"Chameau", "lien":"media/images/Camel.jpg"},
+        { "nom":"Donkey Kong", "lien":"media/images/DK.jpg"},
+        { "nom":"Sandwich", "lien":"media/images/sandwich.png"},
+        { "nom":"Reese", "lien":"media/images/reese.jpg"}
     ]
 }
 
