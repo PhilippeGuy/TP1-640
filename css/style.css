@@ -294,6 +294,7 @@ en précédent notre extension avec «%»
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-image: url("../media/images/eddy.jpg");
   background-color: #3498db;
   width: 6rem;
   height: 6rem;
